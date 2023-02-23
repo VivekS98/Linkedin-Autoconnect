@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>LinkedIn Autoconnect</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html,
+    body {
+      min-width: 300px;
+      min-height: 100px;
+    }
+
+    main {
+      height: full;
+      width: full;
+      margin: 20px;
+    }
+
+    .title {
+      color: white;
+      text-align: center;
+    }
+
+    section {
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid white;
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+  <link rel="stylesheet" href="pico-master/css/pico.min.css">
+</head>
+
+<body>
+  <main class="container">
+    <h3 class="title">Autoconnect</h3>
+    <section>
+      <h1 id="invitations">0</h1>
+      <h6>
+        Invitations sent
+      </h6>
+    </section>
+    <button id="connect" type="button">Connect</button>
+    <script src="popup.js"></script>
+  </main>
+</body>
+
+</html>

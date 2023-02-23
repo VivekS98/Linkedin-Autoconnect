@@ -1,0 +1,22 @@
+{
+    "name": "LinkedIn Autoconnect",
+    "version": "1.0.0",
+    "description": "Automatically connects to the visible profiles.",
+    "manifest_version": 3,
+    "author": "Vivek Kashyap",
+    "action": {
+        "default_popup": "popup/popup.html",
+        "default_title": "LinkedIn Autoconnect"
+    },
+    "icons": {
+        "16": "images/linkedin.svg",
+        "32": "images/linkedin.svg",
+        "48": "images/linkedin.svg",
+        "128": "images/linkedin.svg"
+    },
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting"
+    ]
+}
