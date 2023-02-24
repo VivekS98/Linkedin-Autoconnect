@@ -3,24 +3,31 @@ let invitations = document.getElementById("invitations");
 
 chrome.storage.sync.set({ invites: 0 });
 
-let interval = setInterval(() => {
+setInterval(() => {
   chrome.storage.sync.get("invites", ({ invites }) => {
     if (invites) {
-      invitations.innerHTML = invites;
+      invitations.innerHTML = invites - 2;
       console.log("Invites:: ", invites);
+    }
+  });
+
+  chrome.storage.sync.get("inviting", ({ inviting }) => {
+    if (inviting) {
+      connectBtn.ariaBusy = "true";
+      connectBtn.innerHTML = "Inviting...";
     } else {
       connectBtn.ariaBusy = "false";
       connectBtn.innerHTML = "Connect";
     }
   });
-}, 1000);
+
+}, 500);
 
 // Run on click
 connectBtn.addEventListener("click", async () => {
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true }); // Find current tab
 
-  connectBtn.ariaBusy = "true";
-  connectBtn.innerHTML = "Inviting...";
+  chrome.storage.sync.set({ inviting: true });
 
   chrome.scripting.executeScript({
     // Run the following script on our tab
@@ -51,6 +58,7 @@ connectBtn.addEventListener("click", async () => {
               handleConnect(i + 1);
             } else {
               chrome.storage.sync.set({ invites: 0 });
+              chrome.storage.sync.set({ inviting: false });
             }
           }, 500);
         }, 1000);
